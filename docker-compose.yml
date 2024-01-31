@@ -1,0 +1,248 @@
+version: "3"
+services:
+  auto-browser:
+    image: harleyliu/auto-browser:latest
+    restart: unless-stopped
+    build: ./auto-browser
+    environment:
+      - HEADLESS=$HEADLESS
+      - ENABLE_CLICK=$ENABLE_CLICK
+      - ADNADE_USERNAME=$ADNADE_USERNAME
+      - ADNADE_PASSWORD=$ADNADE_PASSWORD
+      - EBESUCHER_USERNAME=$EBESUCHER_USERNAME
+      - SURFVISITS_USERNAME=$SURFVISITS_USERNAME
+      - SURFVISITS_PASSWORD=$SURFVISITS_PASSWORD
+    volumes:
+      - ./data/auto-browser:/app/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+
+  bearshare:
+    image: bearshare/bearshare:latest
+    restart: unless-stopped
+    command: -email=$BEARSHARE_EMAIL -password=$BEARSHARE_PASSWORD
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  bitping:
+    image: bitping/bitpingd:latest
+    restart: unless-stopped
+    environment:
+      - BITPING_EMAIL=$BITPING_EMAIL
+      - BITPING_PASSWORD=$BITPING_PASSWORD
+    volumes:
+      - ./data/bitpingd:/root/.bitpingd
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  earnapp:
+    image: madereddy/earnapp:latest
+    environment:
+      - EARNAPP_UUID=$EARNAPP_UUID
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  earnfm:
+    image: earnfm/earnfm-client:latest
+    restart: unless-stopped
+    environment:
+      - EARNFM_TOKEN=$EARNFM_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  feelingsurf:
+    image: feelingsurf/viewer:stable
+    restart: unless-stopped
+    environment:
+      - access_token=$FEELINGSURF_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+
+  gaganode:
+    image: jepbura/gaganode:latest
+    restart: unless-stopped
+    environment:
+      - DOWNLOADLINK=$GAGANODE_DOWNLOADLINK
+      - FILENAME=$GAGANODE_FILENAME
+      - TOKEN=$GAGANODE_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  grass:
+    image: mrcolorrain/grass:latest
+    restart: unless-stopped
+    environment:
+      - GRASS_USER=$GRASS_USER
+      - GRASS_PASS=$GRASS_PASS
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 256M
+
+  honeygain:
+    image: honeygain/honeygain:latest
+    restart: unless-stopped
+    command: -tou-accept -email $HONEYGAIN_EMAIL -pass '$HONEYGAIN_PASSWD' -device $DEVICE_NAME
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  meson:
+    image: jepbura/meson:latest
+    restart: unless-stopped
+    ports:
+      - 9222:9222
+    environment:
+      - PORT=9222
+      - TOKEN=$MESON_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  mysterium:
+    image: mysteriumnetwork/myst:latest
+    restart: unless-stopped
+    environment:
+      - MYSTNODE_DUMMY=$MYSTNODE_API_KEY
+    command: service --agreed-terms-and-conditions
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 4449:4449
+    volumes:
+      - ./data/mysterium:/var/lib/mysterium-node
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+
+  packetshare:
+    image: packetshare/packetshare:latest
+    restart: unless-stopped
+    command: -accept-tos -email=$PACKETSHARE_EMAIL -password=$PACKETSHARE_PASSWORD
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  packetstream:
+    image: packetstream/psclient:latest
+    restart: unless-stopped
+    environment:
+      - CID=$PACKETSTREAM_CID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  pawnsapp:
+    image: iproyal/pawns-cli:latest
+    restart: unless-stopped
+    command: -email=$PAWNSAPP_EMAIL -password=$PAWNSAPP_PASSWD -device-name=$DEVICE_NAME -device-id=$DEVICE_NAME -accept-tos
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  proxylite:
+    image: proxylite/proxyservice:latest
+    restart: unless-stopped
+    environment:
+      - USER_ID=$PROXYLITE_USER_ID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  proxyrack:
+    image: proxyrack/pop:latest
+    restart: unless-stopped
+    environment:
+      - UUID=$PROXYRACK_UUID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  repocket:
+    image: repocket/repocket:latest
+    restart: unless-stopped
+    environment:
+      - RP_EMAIL=$REPOCKET_EMAIL
+      - RP_API_KEY=$REPOCKET_API_KEY
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  # speedshare:
+  #   image: mrcolorrain/speedshare:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - CODE=$SPEEDSHARE_TOKEN
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.125"
+  #         memory: 64M
+
+  spidenetwork:
+    image: xterna/spide-network:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  TraffMonetizer:
+    image: traffmonetizer/cli_v2:latest
+    restart: unless-stopped
+    command: start accept --token $TRAFFMONETIZER_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+
+  # dockerUI:
+  #   image: joinsunsoft/docker.ui
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8999:8999
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock

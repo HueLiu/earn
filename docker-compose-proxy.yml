@@ -1,0 +1,240 @@
+version: "3"
+services:
+  auto-browser:
+    image: harleyliu/auto-browser:latest
+    restart: unless-stopped
+    build: ./auto-browser
+    environment:
+      - ADNADE_USERNAME=$ADNADE_USERNAME
+    volumes:
+      - ./data/auto-browser:/app/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1024M
+    network_mode: service:tun2socks
+
+  bearshare:
+    image: bearshare/bearshare:latest
+    restart: unless-stopped
+    command: -email=$BEARSHARE_EMAIL -password=$BEARSHARE_PASSWORD
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  bitping:
+    image: bitping/bitpingd:latest
+    restart: unless-stopped
+    environment:
+      - BITPING_EMAIL=$BITPING_EMAIL
+      - BITPING_PASSWORD=$BITPING_PASSWORD
+    volumes:
+      - ./data/bitpingd:/root/.bitpingd
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  earnapp:
+    image: madereddy/earnapp:latest
+    environment:
+      - EARNAPP_UUID=$EARNAPP_UUID
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  earnfm:
+    image: earnfm/earnfm-client:latest
+    restart: unless-stopped
+    environment:
+      - EARNFM_TOKEN=$EARNFM_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  feelingsurf:
+    image: feelingsurf/viewer:stable
+    restart: unless-stopped
+    environment:
+      - access_token=$FEELINGSURF_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  gaganode:
+    image: jepbura/gaganode:latest
+    restart: unless-stopped
+    environment:
+      - DOWNLOADLINK=$GAGANODE_DOWNLOADLINK
+      - FILENAME=$GAGANODE_FILENAME
+      - TOKEN=$GAGANODE_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  grass:
+    image: mrcolorrain/grass:latest
+    restart: unless-stopped
+    environment:
+      - GRASS_USER=$GRASS_USER
+      - GRASS_PASS=$GRASS_PASS
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 256M
+    network_mode: service:tun2socks
+
+  honeygain:
+    image: honeygain/honeygain:latest
+    restart: unless-stopped
+    command: -tou-accept -email $HONEYGAIN_EMAIL -pass '$HONEYGAIN_PASSWD' -device $DEVICE_NAME
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  packetshare:
+    image: packetshare/packetshare:latest
+    restart: unless-stopped
+    command: -accept-tos -email=$PACKETSHARE_EMAIL -password=$PACKETSHARE_PASSWORD
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  packetstream:
+    image: packetstream/psclient:latest
+    restart: unless-stopped
+    environment:
+      - CID=$PACKETSTREAM_CID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  pawnsapp:
+    image: iproyal/pawns-cli:latest
+    restart: unless-stopped
+    command: -email=$PAWNSAPP_EMAIL -password=$PAWNSAPP_PASSWD -device-name=$DEVICE_NAME -device-id=$DEVICE_NAME -accept-tos
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  proxylite:
+    image: proxylite/proxyservice:latest
+    restart: unless-stopped
+    environment:
+      - USER_ID=$PROXYLITE_USER_ID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  proxyrack:
+    image: proxyrack/pop:latest
+    restart: unless-stopped
+    environment:
+      - UUID=$PROXYRACK_UUID
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  repocket:
+    image: repocket/repocket:latest
+    restart: unless-stopped
+    environment:
+      - RP_EMAIL=$REPOCKET_EMAIL
+      - RP_API_KEY=$REPOCKET_API_KEY
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  # speedshare:
+  #   image: mrcolorrain/speedshare:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - CODE=$SPEEDSHARE_TOKEN
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "0.125"
+  #         memory: 64M
+  #   network_mode: service:tun2socks
+
+  spidenetwork:
+    image: xterna/spide-network:latest
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  TraffMonetizer:
+    image: traffmonetizer/cli_v2:latest
+    restart: unless-stopped
+    command: start accept --token $TRAFFMONETIZER_TOKEN
+    deploy:
+      resources:
+        limits:
+          cpus: "0.125"
+          memory: 64M
+    network_mode: service:tun2socks
+
+  # dockerUI:
+  #   image: joinsunsoft/docker.ui:latest
+  #   restart: always
+  #   ports:
+  #     - 8999:8999
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+
+  tun2socks:
+      image: xjasonlyu/tun2socks:latest
+      restart: always
+      command: ["/bin/sh", "-c", "echo 'nameserver 1.1.1.1\nnameserver 8.8.8.8' > /etc/resolv.conf && ip rule add iif lo ipproto udp dport 53 lookup main && ip rule add iif lo ipproto udp dport 3478 lookup main"]
+      environment:
+          - LOGLEVEL=info
+          - PROXY=$PROXY
+      volumes:
+          - /dev/net/tun:/dev/net/tun
+      cap_add:
+          - NET_ADMIN

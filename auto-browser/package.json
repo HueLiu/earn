@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-schedule": "^2.1.1",
+    "playwright": "^1.48.0"
+  },
+  "name": "adnade",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Hue Liu",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "20"
+  }
+}
