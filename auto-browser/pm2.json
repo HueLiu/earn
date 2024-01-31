@@ -1,0 +1,19 @@
+{
+  "apps": [
+    {
+      "name": "adnade",
+      "script": "src/adnade.js",
+      "time": true
+    },
+    {
+      "name": "ebesucher",
+      "script": "src/ebesucher.js",
+      "time": true
+    },
+    {
+      "name": "surfvisits",
+      "script": "src/surfvisits.js",
+      "time": true
+    }
+  ]
+}
