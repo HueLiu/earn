@@ -1,7 +1,6 @@
 import {} from "dotenv/config";
 import { chromium } from "playwright";
-import schedule from "node-schedule";
-import { scheduleScreenshot, sleep } from "./lib/lib.js";
+import { sleep } from "./lib/lib.js";
 
 (async () => {
   const userDataDir = "./data/browser/surfvisits";

@@ -5,14 +5,15 @@ services:
     restart: unless-stopped
     build: ./auto-browser
     environment:
+      - HEADLESS=$HEADLESS
+      - ENABLE_CLICK=$ENABLE_CLICK
       - ADNADE_USERNAME=$ADNADE_USERNAME
+      - ADNADE_PASSWORD=$ADNADE_PASSWORD
+      - EBESUCHER_USERNAME=$EBESUCHER_USERNAME
+      - SURFVISITS_USERNAME=$SURFVISITS_USERNAME
+      - SURFVISITS_PASSWORD=$SURFVISITS_PASSWORD
     volumes:
       - ./data/auto-browser:/app/data
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 1024M
     network_mode: service:tun2socks
 
   bearshare:

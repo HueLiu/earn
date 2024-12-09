@@ -14,11 +14,6 @@ services:
       - SURFVISITS_PASSWORD=$SURFVISITS_PASSWORD
     volumes:
       - ./data/auto-browser:/app/data
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 1024M
 
   bearshare:
     image: bearshare/bearshare:latest
