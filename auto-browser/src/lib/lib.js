@@ -7,7 +7,7 @@ export const sleep = seconds => {
 };
 
 export const scheduleScreenshot = (page, type, name) => {
-  const cron = "0 * * * * *";
+  const cron = "0 0/10 * * * ?";
   return schedule.scheduleJob(cron, () => {
     const imgPath = `data/${type}/${name}.png`;
     page.screenshot({

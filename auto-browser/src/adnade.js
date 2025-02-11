@@ -22,7 +22,7 @@ import { scheduleScreenshot, sleep } from "./lib/lib.js";
 
   // open ptp
   const page1 = browserContext.pages()[0];
-  await page1.goto(`https://adnade.net/ptp/?user=${username}`);
+  await page1.goto(`https://adnade.net/ptp/?user=${username}&subid=1`);
   scheduleScreenshot(page1, "adnade", "ptp");
   console.log("[adnade] Open ptp successfully.");
 

@@ -9,11 +9,6 @@
       "name": "ebesucher",
       "script": "src/ebesucher.js",
       "time": true
-    },
-    {
-      "name": "surfvisits",
-      "script": "src/surfvisits.js",
-      "time": true
     }
   ]
 }
