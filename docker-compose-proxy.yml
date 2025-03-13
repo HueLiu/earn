@@ -16,12 +16,6 @@ services:
       - ./data/auto-browser:/app/data
     network_mode: service:tun2socks
 
-  # bearshare:
-  #   image: bearshare/bearshare:latest
-  #   restart: always
-  #   command: -email=$BEARSHARE_EMAIL -password=$BEARSHARE_PASSWORD
-  #   network_mode: service:tun2socks
-
   bitping:
     image: bitping/bitpingd:latest
     restart: always
@@ -34,9 +28,9 @@ services:
 
   earnapp:
     image: madereddy/earnapp:latest
+    restart: always
     environment:
       - EARNAPP_UUID=$EARNAPP_UUID
-    restart: always
     network_mode: service:tun2socks
 
   earnfm:
@@ -53,22 +47,14 @@ services:
       - access_token=$FEELINGSURF_TOKEN
     network_mode: service:tun2socks
 
-  # gaganode:
-  #   image: jepbura/gaganode:latest
-  #   restart: always
-  #   environment:
-  #     - DOWNLOADLINK=$GAGANODE_DOWNLOADLINK
-  #     - FILENAME=$GAGANODE_FILENAME
-  #     - TOKEN=$GAGANODE_TOKEN
-  #   network_mode: service:tun2socks
-
-  # grass:
-  #   image: mrcolorrain/grass:latest
-  #   restart: always
-  #   environment:
-  #     - GRASS_USER=$GRASS_USER
-  #     - GRASS_PASS=$GRASS_PASS
-  #   network_mode: service:tun2socks
+  grass:
+    image: alone/grass:latest
+    restart: always
+    ports:
+      - 8082:8080
+    environment:
+      - VNC_PASS=$VNC_PASS
+    network_mode: service:tun2socks
 
   honeygain:
     image: honeygain/honeygain:latest
@@ -117,12 +103,12 @@ services:
       - RP_API_KEY=$REPOCKET_API_KEY
     network_mode: service:tun2socks
 
-  # speedshare:
-  #   image: mrcolorrain/speedshare:latest
-  #   restart: always
-  #   environment:
-  #     - CODE=$SPEEDSHARE_TOKEN
-  #   network_mode: service:tun2socks
+  speedshare:
+    image: mrcolorrain/speedshare:latest
+    restart: always
+    environment:
+      - CODE=$SPEEDSHARE_TOKEN
+    network_mode: service:tun2socks
 
   spidenetwork:
     image: xterna/spide-network:latest
@@ -134,14 +120,6 @@ services:
     restart: always
     command: start accept --token $TRAFFMONETIZER_TOKEN
     network_mode: service:tun2socks
-
-  # dockerUI:
-  #   image: joinsunsoft/docker.ui:latest
-  #   restart: always
-  #   ports:
-  #     - 8999:8999
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
 
   tun2socks:
       image: xjasonlyu/tun2socks:latest

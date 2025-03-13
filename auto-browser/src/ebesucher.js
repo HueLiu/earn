@@ -20,6 +20,7 @@ import { scheduleScreenshot } from "./lib/lib.js";
 
   // open surfbar
   const page = browserContext.pages()[0];
+  page.setDefaultTimeout(0);
   await page.goto(`https://www.ebesucher.com/surfbar/${username}`);
   await page.click("a#surf_now_button");
   scheduleScreenshot(page, "ebesucher", "surfbar");

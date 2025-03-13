@@ -22,12 +22,14 @@ import { scheduleScreenshot, sleep } from "./lib/lib.js";
 
   // open ptp
   const page1 = browserContext.pages()[0];
+  page1.setDefaultTimeout(0);
   await page1.goto(`https://adnade.net/ptp/?user=${username}&subid=1`);
   scheduleScreenshot(page1, "adnade", "ptp");
   console.log("[adnade] Open ptp successfully.");
 
   // open surfbar
   const page2 = await browserContext.newPage();
+  page2.setDefaultTimeout(0);
   await page2.goto(`https://adnade.net/view.php?user=${username}&multi=4`);
   scheduleScreenshot(page2, "adnade", "surfbar");
   console.log("[adnade] Open surfbar successfully.");

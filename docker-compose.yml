@@ -18,11 +18,6 @@ services:
     volumes:
       - ./data/auto-browser:/app/data
 
-  # bearshare:
-  #   image: bearshare/bearshare:latest
-  #   restart: always
-  #   command: -email=$BEARSHARE_EMAIL -password=$BEARSHARE_PASSWORD
-
   bitping:
     image: bitping/bitpingd:latest
     restart: always
@@ -34,9 +29,9 @@ services:
 
   earnapp:
     image: madereddy/earnapp:latest
+    restart: always
     environment:
       - EARNAPP_UUID=$EARNAPP_UUID
-    restart: always
 
   earnfm:
     image: earnfm/earnfm-client:latest
@@ -50,49 +45,18 @@ services:
     environment:
       - access_token=$FEELINGSURF_TOKEN
 
-  # gaganode:
-  #   image: jepbura/gaganode:latest
-  #   restart: always
-  #   environment:
-  #     - DOWNLOADLINK=$GAGANODE_DOWNLOADLINK
-  #     - FILENAME=$GAGANODE_FILENAME
-  #     - TOKEN=$GAGANODE_TOKEN
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.125"
-  #         memory: 64M
-
-  # grass:
-  #   image: mrcolorrain/grass:latest
-  #   restart: always
-  #   environment:
-  #     - GRASS_USER=$GRASS_USER
-  #     - GRASS_PASS=$GRASS_PASS
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.125"
-  #         memory: 256M
+  grass:
+    image: alone/grass:latest
+    restart: always
+    ports:
+      - 8082:8080
+    environment:
+      - VNC_PASS=$VNC_PASS
 
   honeygain:
     image: honeygain/honeygain:latest
     restart: always
     command: -tou-accept -email $HONEYGAIN_EMAIL -pass '$HONEYGAIN_PASSWD' -device $DEVICE_NAME
-
-  # meson:
-  #   image: jepbura/meson:latest
-  #   restart: always
-  #   ports:
-  #     - 9222:9222
-  #   environment:
-  #     - PORT=9222
-  #     - TOKEN=$MESON_TOKEN
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.125"
-  #         memory: 64M
 
   mysterium:
     image: mysteriumnetwork/myst:latest
@@ -142,16 +106,11 @@ services:
       - RP_EMAIL=$REPOCKET_EMAIL
       - RP_API_KEY=$REPOCKET_API_KEY
 
-  # speedshare:
-  #   image: mrcolorrain/speedshare:latest
-  #   restart: always
-  #   environment:
-  #     - CODE=$SPEEDSHARE_TOKEN
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: "0.125"
-  #         memory: 64M
+  speedshare:
+    image: mrcolorrain/speedshare:latest
+    restart: always
+    environment:
+      - CODE=$SPEEDSHARE_TOKEN
 
   spidenetwork:
     image: xterna/spide-network:latest
@@ -161,11 +120,3 @@ services:
     image: traffmonetizer/cli_v2:latest
     restart: always
     command: start accept --token $TRAFFMONETIZER_TOKEN
-
-  # dockerUI:
-  #   image: joinsunsoft/docker.ui
-  #   restart: always
-  #   ports:
-  #     - 8999:8999
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
