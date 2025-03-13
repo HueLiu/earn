@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "SerpClix ClickSense",
+  "version": "3.4.8",
+  "description": "Internal company extension used to manage SERP click activity.",
+  "homepage_url": "https://serpclix.com/",
+  "icons": {
+    "64": "icons/serpclix-64.png",
+    "128": "icons/serpclix-128.png"
+  },
+  "permissions": [
+    "*://*/*",
+    "tabs",
+    "activeTab",
+    "storage",
+    "notifications"
+  ],
+  "browser_action": {
+    "default_icon": "icons/serpclix-128.png",
+    "default_title": "SerpClix ClickSense",
+    "default_popup": "html/login.html"
+  },
+  "background": {
+    "scripts": [
+      "./js/addon/background.js"
+    ]
+  },
+  "applications": {
+    "gecko": {
+      "id": "dev@serpclix.com",
+      "strict_min_version": "68.0",
+      "update_url": "https://serpclix.com/downloads/addon/updates.json"
+    }
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self';"
+}

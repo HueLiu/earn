@@ -1,0 +1,21 @@
+<svg width="120" height="120" version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <filter id="grayscale">
+        <feColorMatrix type="saturate" values="0.0" />
+    </filter>
+
+    <filter id="opacity50">
+        <feComponentTransfer>
+            <feFuncA type="table" tableValues="0 0.25" />
+        </feComponentTransfer>
+    </filter>
+
+    <g style="filter:url(#opacity50)">
+        <g style="filter:url(#grayscale)">
+            <image xlink:href="serpclix.svg" height="120" width="120" />
+        </g>
+    </g>
+</svg>
+

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen"/>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="browser-polyfill.min.js"></script>
+	<title>jobs.ClicksPaid.com Job Extension</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="/text/css" href="/fonts/style.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/all.css">
+</head>
+<body>
+<div id="loading-wrapper" style="display: none">
+	<div class="spinner-border text-apex-green" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+<div class="container">
+	<header class="header">
+		<div class="row gutters">
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-8">
+				<a href="https://jobs.ClicksPaid.com" target="_blank" class="logo">
+					<img src="https://jobs.clickspaid.com/img/logo.png" alt="jobs.ClicksPaid.com" style="width: 205px;height: auto;margin-bottom: 4px;">
+				</a>
+				<div style="font-size: 20px;">Small jobs that matter.</div>
+			</div>
+			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-4 col-4">
+				<ul class="header-actions" id="top-right-menu">
+					<li class="dropdown">
+						<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+							<span class="user-name" style="max-width: none;"><span class="user_login"></span></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="main-container">
+		<div class="page-title">
+			<div class="row gutters">
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+					<h5 class="title">Tasks & Actions</h5>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				</div>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			<div class="row gutters">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">Task</div>
+							<div class="card-sub-title">Here is task description area.</div>
+						</div>
+						<div class="card-body btm-bdr blue pb-0">
+							<div style=" padding: 5px;margin-top: 5px; display: flex; justify-content: center; align-items: center; height: 170px;" class="no_task">
+								<div><span class="revenue-number" style="font-size: 1.5rem">NO TASK IN PROCESS</span></div>
+							</div>
+							<div style=" padding: 5px;margin-top: 5px;height: 170px; display: none; flex-wrap: wrap;" class="task_block">
+								<div id="task_description_key_phrase" style="margin-top: 10px; width: 100%;">
+									<div style="display: inline-block;">Search for the keyword</div>
+									<div style="display: inline-block;font-weight: bold;" id="key_phrase">_________________________</div>
+									<div style="display: inline-block;"> in Search Engine</div>
+								</div>
+								<div id="task_description_target_url" style="margin-top: 10px; width: 100%;">
+									<div style="display: inline-block;">Find and click at the website</div>
+									:
+									<div style="display: inline-block;font-weight: bold;" id="target_url">_________________________</div>
+									<div style="display: inline-block;"> and click at 2-3 other random websites</div>
+								</div>
+								<div id="task_description_bot_mode" style="margin-top: 10px; width: 100%;">
+									<!-- <div style="display: inline-block;">Type of task</div>: -->
+									<div style="display: inline-block;font-weight: bold;" id="bot_mode">_________________________</div>
+								</div>
+								<div id="task_description_ttl_second" style="margin-top: 10px; width: 100%;">
+									<div style="display: inline-block;">Task time to live</div>
+									:
+									<div style="display: inline-block;font-weight: bold;" id="ttl_second">_________________________</div>
+									<div style="display: inline-block;"> seconds</div>
+								</div>
+								<div id="task_description_search_depth_page_count" style="margin-top: 10px; width: 100%;">
+									<div style="display: inline-block;">Maximum search depth (pages)</div>
+									:
+									<div style="display: inline-block;">Not deeper than:</div>
+									<div style="display: inline-block;font-weight: bold;" id="search_depth_page_count">_________________________</div>
+									<div style="display: inline-block;"> pages</div>
+								</div>
+								<div id="task_description_start_task" style="margin-top: 10px; width: 100%;">
+								</div>
+							</div>
+							<div class="revenue">
+								<div class="revenue-header">
+									<i class="icon-trending_up text-success"></i>
+									<small> </small>
+								</div>
+								<div id="revenue" class="blue-graph"></div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">Actions</div>
+							<div class="card-sub-title">You can do following actions:</div>
+						</div>
+						<div class="card-body btm-bdr green pb-0">
+							<div class="revenue">
+								<div class="revenue-header">
+									<div style="margin-top: 20px">
+										<span class="revenue-number" style="font-size: 1.5rem">You can get task:</span>
+										<input type="button" value="Get task" class="get_task btn btn-primary float-right" id="get_task" style="display: inline-block;">
+									</div>
+									<div style="margin-top: 50px">
+									</div>
+								</div>
+								<div class="blue-graph"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="plugin-version"></div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="main-container">
+		<div class="page-title">
+			<div class="row gutters">
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+					<h5 class="title">Instructions</h5>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				</div>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			<div class="row gutters">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="card" style="padding-bottom: 50px;">
+						<div class="card-header">
+							<div class="card-title">FAQ</div>
+							<div class="card-sub-title">
+                                If you don`t understand the instructions please contact us at <a href="mailto:support@clickspaid.com" style="color:#828c94;text-decoration:underline">support@clickspaid.com</a>
+							</div>
+						</div>
+						<div class="card-body blue pb-0" style="margin-top:20px">
+							<div>
+								<h5>Instructions</h5>
+								<div style="padding-left:20px">
+									<ul style="list-style: square inside none;margin:5px 0">
+										<li>After "Start task" pressed</li>
+										<li>Search keywords will be copied to clipboard</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="margin-top: 50px">
+	<input type="submit" value="Logout" class="logout_button" id="logout_button">
+</div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
+

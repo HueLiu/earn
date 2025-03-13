@@ -1,0 +1,90 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="/icons/serpclix-64.png" />
+    <title>Order List — SerpClix ClickSense</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="orders">
+
+    <div id="serpclix_messages_app" v-cloak></div>
+    <div id="serpclix_orders_list_app" v-cloak></div>
+
+    <div class="txt">
+        <h1>INSTRUCTIONS</h1>
+        <ol type="1">
+            <li>
+                Click on the order.
+            </li>
+            <li>
+                The keyword will be copied to your clipboard automatically.
+                Paste the keyword (right-click and select <code>"Paste"</code> or type <code>CTRL+V</code>)
+                into the search box and click Search.
+            </li>
+            <li>
+                Find the highlighted URL from the order and click on it.
+                <b class="text-red">DO NOT CLICK ON ANY ADS</b>, only regular listings.
+                You may have to scroll through several pages of Google search results.
+            </li>
+            <li>
+                Once the page loads the timer will begin. <b>You must wait until the timer counts down.</b><br>
+                DO NOT leave the website and DO NOT click the Back button on your browser.
+                If you leave the website or click the Back button you will not receive credit for the order.<br>
+                DO NOT click on any ads, DO NOT leave the site, and <b>DO NOT close the tab</b>.
+            </li>
+            <li>
+                After the timer completes the tab will close automatically and you will be returned to your Order List.
+                At this point you will be credited for the order if the keyword was entered correctly.
+                Again, <b>wait for the timer to countdown</b>, then you may complete your next order.
+            </li>
+        </ol>
+
+
+        <h3>IMPORTANT WARNING</h3>
+        <p class="important">
+            IF YOU CLICK ON ANY ADS, OR IF YOU OR YOUR HOUSEHOLD USE MORE THAN ONE ACCOUNT, YOUR ACCOUNT(S) WILL BE BANNED.
+            IF YOU USE A PROXY OR A VPN OR IN ANY WAY ATTEMPT TO SPOOF OUR SYSTEM YOU WILL BE BANNED.
+            IF YOU ARE BANNED YOU WILL LOSE ALL ACCESS TO SERPCLIX AND YOU WILL NOT RECEIVE ANY CREDIT OR PAYMENT FOR ANY CLICKS YOU'VE ALREADY DONE.
+        </p>
+        <p class="important text-red">
+                IF YOU PUBLICLY SHARE OR POST ANY INFORMATION FROM ANY OF THE ORDERS YOU RECEIVE,
+                INCLUDING ANY MENTION OF THE KEYWORD TEXT OR URL OR ANY SCREENSHOT,
+                YOUR ACCOUNT WILL BE BANNED AND YOU MAY ALSO BE PROSECUTED FOR DAMAGES UP TO THE FULL EXTENT OF THE LAW.
+        </p>
+        <p class="important text-red">
+            SERPCLIX IS A GREAT WAY FOR TENS OF THOUSANDS OF PEOPLE ALL OVER THE WORLD TO MAKE A SMALL SIDE INCOME IN THEIR SPARE TIME ONLINE.
+            PLEASE DO NOT RUIN IT FOR OTHERS BY VIOLATING THESE TERMS.
+        </p>
+        </p>
+
+        <p class="text-center">
+            <a href="privacy_policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            |
+            <a href="https://serpclix.com/support/" target="_blank" rel="noopener">Contacts</a>
+        </p>
+
+    </div>
+
+    <div id="serpclix_hcbox_app"></div>
+
+    <!-- <script src="../js/vendor/vue.min.js"></script> -->
+    <script src="../js/vendor/vue.runtime.min.js"></script>
+    <script src="../js/vendor/browser-polyfill.min.js"></script>
+    <script src="../js/vendor/md5.min.js"></script>
+    <script src="../js/addon/settings.js"></script>
+
+    <script src="../js/addon/templates/orders.js"></script>
+    <script src="../js/addon/orders.js"></script>
+
+    <script src="../js/addon/templates/messages.js"></script>
+    <script src="../js/addon/messages.js"></script>
+
+    <script src="../js/addon/templates/hc.js"></script>
+    <script src="../js/addon/hc.js"></script>
+
+</body>
+
+</html>

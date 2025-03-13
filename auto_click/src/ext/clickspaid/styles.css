@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font: normal .875rem 'Ubuntu', 'Roboto Slab', sans-serif;
+    color: #2e323c;
+    min-height: 100%;
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url("img/bg8.jpg");
+}
+
+body.popup input {
+    margin-bottom: 10px;
+}
+body.popup .login_button {
+    border-color: #9aff93;
+    margin-top: 10px;
+}

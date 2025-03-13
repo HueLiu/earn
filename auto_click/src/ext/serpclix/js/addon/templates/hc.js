@@ -1,0 +1,1 @@
+function hc_vueapp_compiled_template_render(){with(this){return src?_c("iframe",{attrs:{src:src,id:"xaddhc",referrerpolicy:"no-referrer",frameborder:"0",sandbox:"allow-scripts"}}):_e()}}var hc_vueapp_compiled_template_static_render_funcs=[];

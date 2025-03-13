@@ -1,0 +1,55 @@
+{
+  "manifest_version": 2,
+  "name": "ClicksPaid jobs",
+  "short_name": "ClicksPaid jobs",
+  "description": "Internal company extension used to manage click activity.",
+  "homepage_url": "https://www.clickspaid.com/",
+  "version": "5.33",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "jquery-3.6.0.min.js",
+        "browser-polyfill.min.js",
+        "content.js"
+      ]
+    }
+  ],
+  "icons": {
+    "256": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "256": "icon.png"
+    },
+    "default_title": "ClicksPaid jobs. Click to start."
+  },
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "incognito": "spanning",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "jobs-clickspaid-addon-v-5-11@clickspaid.com",
+      "update_url": "https://jobs.clickspaid.com/download/Updates_FireFox.json"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "notifications",
+    "clipboardRead",
+    "clipboardWrite",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "privacy",
+    "storage",
+    "tabs",
+    "https://*/",
+    "http://*/"
+  ]
+}

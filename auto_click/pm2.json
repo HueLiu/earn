@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "serpclix",
+      "script": "./src/serpclix.js",
+      "min_uptime": 300000,
+      "max_restarts": 8
+    },
+    {
+      "name": "clickspaid",
+      "script": "./src/clickspaid.js",
+      "min_uptime": 300000,
+      "max_restarts": 8
+    }
+  ]
+}
