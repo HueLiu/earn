@@ -30,6 +30,9 @@
     "page": "background.html",
     "persistent": true
   },
+  "chrome_url_overrides": {
+    "newtab": "popup.html"
+  },
   "incognito": "spanning",
   "browser_specific_settings": {
     "gecko": {

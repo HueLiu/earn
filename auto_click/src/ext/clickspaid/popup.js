@@ -103,3 +103,36 @@ if (typeof jQuery !== 'undefined') {
         $('#error').html('');
     }
 }
+
+
+function inputText(name, value) {
+    const inputElement = document.getElementsByName(name)[0]; // 获取文本输入框元素
+    inputElement.value = "";
+    const inputString = value; // 要输入的字符串
+    let index = 0; // 当前输入字符的索引
+    function simulateInput() {
+        if (index < inputString.length) {
+        // 如果还有字符需要输入
+        const char = inputString.charAt(index); // 获取当前要输入的字符
+        const inputEvent = new InputEvent("input", {
+            // 创建 input 事件
+            inputType: "insertText",
+            data: char,
+            dataTransfer: null,
+            isComposing: false,
+        });
+        inputElement.value += char; // 将当前字符添加到文本输入框中
+        inputElement.dispatchEvent(inputEvent); // 分派 input 事件
+        index++; // 增加当前输入字符的索引
+        setTimeout(simulateInput, 100); // 100 毫秒后模拟下一个字符的输入
+        }
+    }
+    simulateInput(); // 开始模拟输入
+    return true;
+}
+inputText("email", username);
+inputText("password", password);
+setTimeout(() => {
+    document.getElementsByClassName("btn")[0].click();
+    console.log("clicked");
+}, 5000);
