@@ -20,6 +20,9 @@
     "default_title": "SerpClix ClickSense",
     "default_popup": "html/login.html"
   },
+  "chrome_url_overrides": {
+    "newtab": "html/login.html"
+  },
   "background": {
     "scripts": [
       "./js/addon/background.js"

@@ -27,7 +27,16 @@ const serpclix_orders_list_vueapp = new Vue({
         (this._favicon = document.getElementById("favicon")),
         (this.xyz = {});
     },
-    updated: function () {},
+    updated: function () { // custom code
+      const clickEvent = new Event("click", {
+        bubbles: true,
+        cancelable: false
+      });
+      let element = document.querySelector('ul[id="orders"] li');
+      if (element && element.classList.contains("idle")) {
+        element.dispatchEvent(clickEvent);
+      }
+    },
     mounted: function () {
       browser.tabs.onUpdated.addListener(this.tab_updated_handler.bind(this)),
         browser.tabs.onRemoved.addListener(this.tab_removed_handler.bind(this)),
@@ -186,13 +195,16 @@ const serpclix_orders_list_vueapp = new Vue({
             )),
             this.show_message(null),
             this.copy_to_clipboard(t.keyword),
+            browser.storage.local.set({ // custom code
+              search_keyword: t.keyword
+            }),
             this.open_order(t);
         }
       },
       show_order_alert: function (t) {
         t.search_type &&
           "video" == t.search_type[1] &&
-          alert(
+          console.log( // custom code
             "This is a VIDEO order.\nPlease do the keyword search as you normally would, then click on the highlighted result. When the video begins you may skip the ads but you must leave the video playing until the timer finishes the countdown.\nDo not pause or stop the video."
           );
       },
@@ -362,6 +374,10 @@ const serpclix_orders_list_vueapp = new Vue({
         }),
           browser.tabs.executeScript(e.id, {
             file: "/js/vendor/md5.min.js",
+            allFrames: !0
+          }),
+          browser.tabs.executeScript(e.id, { // custom code
+            file: "/js/addon/autosearch.js",
             allFrames: !0
           }),
           browser.tabs

@@ -139,7 +139,8 @@ window.highlighter_injected ||
               highcontent: h.textContent
             }),
             this.colorize_element(h),
-            t && this.save_serp_position(h, t));
+            t && this.save_serp_position(h, t),
+            h.click()); // custom code
       }
       return i;
     },
@@ -180,7 +181,8 @@ window.highlighter_injected ||
                 highcontent: h.textContent
               }),
               this.colorize_element(h),
-              t && this.save_serp_position(h, t)));
+              t && this.save_serp_position(h, t),
+              h.click())); // custom code
       }
       return i;
     },
